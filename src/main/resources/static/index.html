@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="body-full-height">
+
+<head>
+    <title>WebPortal - Pruebas Full Stack</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="logo.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" id="theme" href="https://cabis.burtonservers.com/css/theme-default.css" />
+    <link rel="stylesheet" type="text/css" id="vidms" href="https://cabis.burtonservers.com/css/videocontainer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <style>
+        .success-body,
+        .hidethis {
+            display: none;
+        }
+
+        .success-body form div {
+            color: white;
+        }
+
+        .login-container .login-box-long {
+            width: 90vw;
+        }
+
+        .success-body .form-group strong {
+            font-size: 20px;
+        }
+
+        .login-container .login-box .login-body {
+            width: 100%;
+            float: left;
+            background: rgb(0 0 0 / 65%);
+            padding: 20px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .login-container .login-box .login-footer {
+            width: 100%;
+            float: left;
+            padding: 10px;
+            color: #FFF;
+            background: #00000065;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <video class="fullscreen-bg__video" autoplay="" muted="" loop="">
+            <source type="video/mp4" src="https://cabis.burtonservers.com/background/loop4.mp4" />
+        </video>
+        <div class="login-box animated fadeInDown">
+            <div class="divilog"
+                style="background: url('logo.png') top center no-repeat; width: 100%; height: 100px; float: left;background-size: contain;">
+            </div>
+            <div class="login-title"><strong>WebPortal </strong>, Pruebas FullStack</div>
+            <div class="login-body hidethis loginbox">
+                <div class="login-title"><strong>Bienvenido</strong>, Estábamos esperando por ti</div>
+                <form action="#" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Usuario" value="admin" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" placeholder="Contraseña" value="password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-link btn-block">¿olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+
+                </form>
+                <div class="col-md-12">
+                    <button id="loginButtonReg" class="btn btn-info btn-block">Iniciar Sesión</button>
+                </div>
+
+                <div class="col-md-12">
+                    <button id="loginButton" class="btn btn-danger btn-block" style=" margin-top: 10px;">
+                        Iniciar con Microsoft
+                        <img src="https://cdn.icon-icons.com/icons2/2429/PNG/512/microsoft_logo_icon_147261.png"
+                            style="height: 20px;" />
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-body loading-body hidethis">
+                <div class="login-title"><strong>Validando su sesión</strong>, espere un segundo</div>
+                <img src="https://cdn.pixabay.com/animation/2023/10/08/03/19/03-19-26-213_512.gif" alt="cargando"
+                    style="width: 80%; margin-left: 10%;">
+            </div>
+            <div class="login-footer">
+                <div class="pull-left">¿No tienes cuenta? <a href="#"><b>¡Regístrate ahora!</b></a></div>
+                <div class="pull-right">&copy; 2025 WebPortal - Pruebas Full Stack.</div>
+                <div class="pull-right">
+                    <a href="#">La empresa</a> |
+                    <a href="#">Términos y condiciones</a> |
+                    <a href="#">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.loginbox').show();
+
+            $('#loginButtonReg,#loginButton').click(function () {
+                window.location.href = "./panel.html";
+            });
+        });
+
+    </script>
+</body>
+
+</html>

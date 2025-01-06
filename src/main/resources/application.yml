@@ -1,0 +1,21 @@
+server:
+  port: 80
+spring: 
+  profiles:
+    active: 
+    - dev
+  application:
+    name: WebPortal
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-doc 
+    groups: 
+      enabled: true
+    url: /v3/api-docs 
+  swagger-ui:
+    path: /swagger
+    supportedSubmitMethods: '"get", "put", "post"'
+logging:
+  file:
+    name: log/app.log
