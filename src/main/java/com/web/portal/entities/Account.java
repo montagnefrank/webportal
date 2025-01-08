@@ -32,11 +32,16 @@ public class Account {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+    
+    public Account() {    }
+ 
 
-    // Default Constructor
-    public Account() {}
-
-    // Getters and Setters
+    public Account(Long id, String accountNumber, String accountType) {
+        this.id = id;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+    }
+ 
     public Long getId() {
         return id;
     }

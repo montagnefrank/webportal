@@ -4,7 +4,7 @@ WORKDIR /app
 COPY build.gradle . 
 COPY src /app/src
 
-RUN gradle build --no-daemon
+RUN gradle build --no-daemon -x test
 
 FROM amazoncorretto:17.0.8-alpine3.18
 

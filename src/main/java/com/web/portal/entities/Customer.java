@@ -40,8 +40,15 @@ public class Customer {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
- 
-    public Customer() {}
+
+    public Customer() { 
+    }
+
+    public Customer(Long clientId, String name) {
+        this.clientId = clientId;
+        this.name = name;
+    }
+    
  
     public Customer(Long clientId, String name, String gender, Integer age, String identification, String address,
                     String telephone, String password, String state, LocalDateTime createdAt, LocalDateTime updatedAt) {

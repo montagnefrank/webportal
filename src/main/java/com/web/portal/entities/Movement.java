@@ -26,11 +26,19 @@ public class Movement {
 
     @Column(name = "date", nullable = false, updatable = false)
     private LocalDateTime date;
+    
+    public Movement() { }
+    
 
-    // Default Constructor
-    public Movement() {}
-
-    // Getters and Setters
+    public Movement(Long id, Account account, Double amount) {
+        this.id = id;
+        this.account = account;
+        this.amount = amount;
+    }
+    
+    public String getAccountNumber() {
+        return account != null ? account.getAccountNumber() : null;
+    }
     public Long getId() {
         return id;
     }
