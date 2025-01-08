@@ -21,21 +21,33 @@ public class MovementsController {
         this.movementService = movementService;
     }
 
+    @PostMapping
+    public ResponseEntity<?> createMovement(@RequestBody Movement movement) {
+        try {
+            Movement createdMovement = movementService.createMovement(movement);
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdMovement);
+        } catch (RuntimeException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+        }
+    }
+
     @GetMapping
-    public List<Movement> getAllMovements() {
-        return movementService.getAllMovements();
+    public ResponseEntity<List<Movement>> getAllMovements() {
+        List<Movement> movements = movementService.getAllMovements();
+        return ResponseEntity.ok(movements);
+    }
+
+    @GetMapping("/cuenta/{accountNumber}")
+    public ResponseEntity<List<Movement>> getMovementsByAccountNumber(@PathVariable String accountNumber) {
+        List<Movement> movements = movementService.getMovementsByAccountNumber(accountNumber);
+        return movements != null && !movements.isEmpty() ? ResponseEntity.ok(movements) : ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Movement> getMovementById(@PathVariable Long id) {
         Optional<Movement> movement = movementService.getMovementById(id);
-        return movement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
-
-    @PostMapping
-    public ResponseEntity<Movement> createMovement(@RequestBody Movement movement) {
-        Movement createdMovement = movementService.createMovement(movement);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdMovement);
+        return movement.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @PutMapping("/{id}")

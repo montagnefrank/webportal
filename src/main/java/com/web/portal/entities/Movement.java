@@ -1,24 +1,36 @@
 package com.web.portal.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.util.Date;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "movement")
 public class Movement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long customerId;
-    private String type;
-    private double amount;
-    private Date date;
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
 
-    // Getters and setters
+    @Column(name = "type", nullable = false)
+    private String type;
+
+    @Column(name = "amount", nullable = false)
+    private Double amount;
+
+    @Column(name = "balance", nullable = false)
+    private Double balance;
+
+    @Column(name = "date", nullable = false, updatable = false)
+    private LocalDateTime date;
+
+    // Default Constructor
+    public Movement() {}
+
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -27,12 +39,12 @@ public class Movement {
         this.id = id;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public String getType() {
@@ -43,19 +55,27 @@ public class Movement {
         this.type = type;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

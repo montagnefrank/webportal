@@ -21,25 +21,30 @@ public class AccountService {
         return accountRepository.findById(id).orElse(null);
     }
 
+    public List<Account> getAccountByAccountNumber(String accountNumber) {
+        return accountRepository.findByAccountNumberContainingIgnoreCase(accountNumber);
+    }
+
+    public List<Account> getAccountsByCustomerName(String customerName) {
+        return accountRepository.findByCustomer_NameContainingIgnoreCase(customerName);
+    }
+
     public Account createAccount(Account account) {
         return accountRepository.save(account);
     }
 
     public Account updateAccount(Long id, Account updatedAccount) {
-        Account account = accountRepository.findById(id).orElse(null);
-        if (account != null) {
-            account.setName(updatedAccount.getName());
-            account.setType(updatedAccount.getType());
+        return accountRepository.findById(id).map(account -> {
+            account.setAccountNumber(updatedAccount.getAccountNumber());
+            account.setAccountType(updatedAccount.getAccountType());
+            account.setInitialBalance(updatedAccount.getInitialBalance());
+            account.setStatus(updatedAccount.getStatus());
+            account.setCustomer(updatedAccount.getCustomer());
             return accountRepository.save(account);
-        }
-        return null;
+        }).orElse(null);
     }
 
-    public boolean deleteAccount(Long id) {
-        if (accountRepository.existsById(id)) {
-            accountRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void deleteAccount(Long id) {
+        accountRepository.deleteById(id);
     }
 }

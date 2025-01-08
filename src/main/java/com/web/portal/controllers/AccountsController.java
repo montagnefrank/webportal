@@ -26,21 +26,32 @@ public class AccountsController {
         return account != null ? ResponseEntity.ok(account) : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/buscar/numerodecuenta")
+    public ResponseEntity<List<Account>> getAccountByAccountNumber(@RequestParam String accountNumber) {
+        List<Account> account = accountService.getAccountByAccountNumber(accountNumber);
+        return account != null ? ResponseEntity.ok(account) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/buscar/nombrecliente")
+    public ResponseEntity<List<Account>> getAccountsByCustomerName(@RequestParam String customerName) {
+        List<Account> accounts = accountService.getAccountsByCustomerName(customerName);
+        return accounts != null && !accounts.isEmpty() ? ResponseEntity.ok(accounts) : ResponseEntity.notFound().build();
+    }
+
     @PostMapping
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         return ResponseEntity.ok(accountService.createAccount(account));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account updatedAccount) {
-        Account account = accountService.updateAccount(id, updatedAccount);
-        return account != null ? ResponseEntity.ok(account) : ResponseEntity.notFound().build();
+    public ResponseEntity<Account> updateAccount(@PathVariable Long id, @RequestBody Account account) {
+        Account updatedAccount = accountService.updateAccount(id, account);
+        return updatedAccount != null ? ResponseEntity.ok(updatedAccount) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
-        return accountService.deleteAccount(id) ?
-                ResponseEntity.ok("Cuenta Eliminada.") :
-                ResponseEntity.notFound().build();
+    public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
+        accountService.deleteAccount(id);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,0 +1,608 @@
+{
+	"info": {
+		"_postman_id": "f159f64a-8917-4063-8f3f-d6b6e15b4105",
+		"name": "PRUEBAS WEBPORTAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28141025"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/cuentas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/cuentas\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas/{id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cuentas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/cuentas/{id}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas/buscar/numerodecuenta?accountNumber=12345",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cuentas/buscar/numerodecuenta?accountNumber=12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"buscar",
+						"numerodecuenta"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "12345"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/cuentas/buscar/numerodecuenta?accountNumber=12345\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas/buscar/nombrecliente?customerName=John",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cuentas/buscar/nombrecliente?customerName=John",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"buscar",
+						"nombrecliente"
+					],
+					"query": [
+						{
+							"key": "customerName",
+							"value": "John"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/cuentas/buscar/nombrecliente?customerName=John\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"12345\",\r\n    \"initialBalance\": 1000,\r\n    \"accountType\": \"Checking\",\r\n    \"status\": \"ACTIVE\",\r\n    \"customer\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST \"http://localhost:8080/cuentas\" -H \"Content-Type: application/json\" -d '{\r\n    \"accountNumber\": \"12345\",\r\n    \"initialBalance\": 1000,\r\n    \"accountType\": \"Checking\",\r\n    \"status\": \"ACTIVE\",\r\n    \"customer\": {\"id\": 1}\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"12345\",\r\n    \"initialBalance\": 1500,\r\n    \"accountType\": \"Saving\",\r\n    \"status\": \"INACTIVE\",\r\n    \"customer\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cuentas/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT \"http://localhost:8080/cuentas/{id}\" -H \"Content-Type: application/json\" -d '{\r\n    \"accountNumber\": \"12345\",\r\n    \"initialBalance\": 1500,\r\n    \"accountType\": \"Saving\",\r\n    \"status\": \"INACTIVE\",\r\n    \"customer\": {\"id\": 1}\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/cuentas/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cuentas/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cuentas",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/cuentas/{id}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/clientes\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes/{id}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/clientes/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/clientes/{id}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes/buscar?name=John",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/clientes/buscar?name=John",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"buscar"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "John"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/clientes/buscar?name=John\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"address\": \"123 Main St\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST \"http://localhost:8080/clientes\" -H \"Content-Type: application/json\" -d '{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"address\": \"123 Main St\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Johnathan Doe\",\r\n    \"email\": \"johnathan.doe@example.com\",\r\n    \"address\": \"456 Elm St\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT \"http://localhost:8080/clientes/{id}\" -H \"Content-Type: application/json\" -d '{\r\n    \"name\": \"Johnathan Doe\",\r\n    \"email\": \"johnathan.doe@example.com\",\r\n    \"address\": \"456 Elm St\"\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/clientes/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/clientes/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/clientes/{id}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movimientos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/movimientos\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movimientos/cuenta/{accountNumber}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movimientos/cuenta/{accountNumber}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos",
+						"cuenta",
+						"{accountNumber}"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/movimientos/cuenta/{accountNumber}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movimientos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 100,\r\n    \"movementType\": \"Deposit\",\r\n    \"account\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST \"http://localhost:8080/movimientos\" -H \"Content-Type: application/json\" -d '{\r\n    \"amount\": 100,\r\n    \"movementType\": \"Deposit\",\r\n    \"account\": {\"id\": 1}\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movimientos/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 200,\r\n    \"movementType\": \"Withdrawal\",\r\n    \"account\": {\"id\": 1}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/movimientos/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT \"http://localhost:8080/movimientos/{id}\" -H \"Content-Type: application/json\" -d '{\r\n    \"amount\": 200,\r\n    \"movementType\": \"Withdrawal\",\r\n    \"account\": {\"id\": 1}\r\n}'\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movimientos/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/movimientos/{id}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movimientos",
+						"{id}"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE \"http://localhost:8080/movimientos/{id}\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/reportes/fecha?startDate=2022-01-01&endDate=2022-12-31",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/reportes/fecha?startDate=2025-01-01&endDate=2025-12-31",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reportes",
+						"fecha"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2025-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2025-12-31"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/reportes/fecha?startDate=2022-01-01&endDate=2022-12-31\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"health"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET \"http://localhost:8080/health\" -H \"Content-Type: application/json\"\r\n"
+			},
+			"response": []
+		}
+	]
+}

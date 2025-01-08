@@ -18,27 +18,37 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public List<Customer> getAllCustomers() {
+    public List<Customer> findAllCustomers() {
         return customerRepository.findAll();
     }
 
-    public Optional<Customer> getCustomerById(Long id) {
+    public Optional<Customer> findCustomerById(Long id) {
         return customerRepository.findById(id);
+    }
+
+    public List<Customer> findCustomersByName(String name) {
+        return customerRepository.findByNameContainingIgnoreCase(name);
     }
 
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
-    public void deleteCustomer(Long id) {
-        customerRepository.deleteById(id);
+    public Customer updateCustomer(Long id, Customer updatedCustomer) {
+        return customerRepository.findById(id).map(existingCustomer -> {
+            existingCustomer.setName(updatedCustomer.getName());
+            existingCustomer.setGender(updatedCustomer.getGender());
+            existingCustomer.setAge(updatedCustomer.getAge());
+            existingCustomer.setIdentification(updatedCustomer.getIdentification());
+            existingCustomer.setAddress(updatedCustomer.getAddress());
+            existingCustomer.setTelephone(updatedCustomer.getTelephone());
+            existingCustomer.setPassword(updatedCustomer.getPassword());
+            existingCustomer.setState(updatedCustomer.getState());
+            return customerRepository.save(existingCustomer);
+        }).orElseThrow(() -> new RuntimeException("Customer not found"));
     }
 
-    public Customer updateCustomer(Long id, Customer customerDetails) {
-        Customer customer = customerRepository.findById(id).orElseThrow();
-        customer.setName(customerDetails.getName());
-        customer.setEmail(customerDetails.getEmail());
-        customer.setAddress(customerDetails.getAddress());
-        return customerRepository.save(customer);
+    public void deleteCustomer(Long id) {
+        customerRepository.deleteById(id);
     }
 }

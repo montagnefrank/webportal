@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="logo.png" type="image/x-icon" />
+    <link rel="icon" href="pichincha.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" id="theme" href="https://cabis.burtonservers.com/css/theme-default.css" />
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css?v=<?php print @$verisonsistemac; ?>"
@@ -16,6 +16,12 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer">
         </script>
+    <style>
+        .inicialpanel,
+        .addpanelshow {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,11 +30,11 @@
             <ul class="x-navigation">
                 <li class="xn-profile">
                     <a href="#" class="profile-mini">
-                        <img src="/pichincha.png" alt="John Doe" />
+                        <img src="./pichincha.png" alt="Pichincha Logo" />
                     </a>
                     <div class="profile">
                         <div class="profile-image">
-                            <img src="/pichincha.png" alt="John Doe" />
+                            <img src="./pichincha.png" alt="Pichincha Logo" />
                         </div>
                         <div class="profile-data">
                             <div class="profile-data-name">Frank Montagne</div>
@@ -149,39 +155,123 @@
                             </ul>
                         </div>
                         <div class="panel-body addpanelnormal">
-                            <div class="col-md-8">
-                                <div class="form-group push-up-10">
-                                    <h4>Buscar:</h4>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="fas fa-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Buscar Clientes...">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group push-up-10">
+                                        <h4>Buscar:</h4>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control buscarclienteinp"
+                                                placeholder="Buscar Clientes...">
+                                            <div onclick="buscarcliente()" class="input-group-addon buscarclientebtn">
+                                                <span class="fas fa-search"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="    margin-top: 25px;">
+                                <div class="col-md-12">
+                                    <div class="search-results">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading ui-draggable-handle">
+                                                    <h3 class="panel-title">Listado de Clientes</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Nombre</th>
+                                                                <th>Dirección</th>
+                                                                <th>Teléfono</th>
+                                                                <th>Contraseña</th>
+                                                                <th>Estado</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body form-group-separated addpanelshow">
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Nombre</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="usernombre_input" type="text" value="" placeholder="Ingresa el nombre"
-                                        maxlength="40" class="form-control alphaonly" required="required">
+
+                        <div class="panel-body form-group-separated  addpanelshow">
+
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Nombre</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="usernombre_input"
+                                            placeholder="Ingresa el nombre" maxlength="40"
+                                            class="form-control alphaonly" required="required">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Correo</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="useremaile_input" type="text" value="" placeholder="Ingresa el correo"
-                                        maxlength="40" class="form-control alphaonly" required="required">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Género</label>
+                                    <div class="col-md-10">
+                                        <select id="usergenero_input" class="form-control select" data-style="btn-info">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Dirección</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="useraddr_input" type="text" value="" placeholder="Ingresa la dirección"
-                                        maxlength="40" class="form-control alphaonly" required="required">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Edad</label>
+                                    <div class="col-md-10">
+                                        <input id="userage_input" type="number" value="" placeholder="Ingresa la edad"
+                                            maxlength="2" class="form-control alphaonly" required="required"">
+                                    </div>
                                 </div>
-                            </div>
+                                <div class=" form-group">
+                                        <label class="col-md-2 control-label">Identificación</label>
+                                        <div class="col-md-10">
+                                            <input id="userdocum_input" type="number" value=""
+                                                placeholder="Ingresa la Identificación" maxlength="2"
+                                                class="form-control alphaonly" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Dirección</label>
+                                        <div class="col-md-10">
+                                            <input id="useraddr_input" type="text" value=""
+                                                placeholder="Ingresa la dirección" maxlength="40"
+                                                class="form-control alphaonly" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Teléfono</label>
+                                        <div class="col-md-10">
+                                            <input id="userphone_input" type="text" value=""
+                                                placeholder="Ingresa el teléfono" maxlength="20"
+                                                class="form-control alphaonly" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Contraseña</label>
+                                        <div class="col-md-10">
+                                            <input id="userpass_input" type="text" value=""
+                                                placeholder="Ingresa la Contraseña" maxlength="40"
+                                                class="form-control alphaonly" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Estado de la cuenta</label>
+                                        <div class="col-md-10">
+                                            <select id="userstatus_input" class="form-control select"
+                                                data-style="btn-info">
+                                                <option value="TRUE">Activo</option>
+                                                <option value="FALSE">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                            </form>
                         </div>
+
                         <div class="panel-footer addpanelnormal">
                             <span class="pull-right btn btn-success agregarnuevoclientebtn" title="Agregar Nuevo">
                                 <i class="fas fa-plus"></i> Nuevo </span>
@@ -197,52 +287,116 @@
                         <div class="panel-heading">
                             <div class="panel-title-box">
                                 <h3>Listado de Cuentas</h3>
-                                <span>Cuentas del sistema </span>
+                                <span>Cuentas del sistema</span>
                             </div>
                             <ul class="panel-controls" style="margin-top: 2px;">
-                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> </a></li>
-                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> </a></li>
+                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                             </ul>
                         </div>
                         <div class="panel-body addpanelnormal">
-                            <div class="col-md-8">
-                                <div class="form-group push-up-10">
-                                    <h4>Buscar:</h4>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="fas fa-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Buscar Cuentas...">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group push-up-10">
+                                        <h4>Buscar:</h4>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control buscarcuentainp"
+                                                placeholder="Buscar Cuentas...">
+                                            <div onclick="buscarcuenta()" class="input-group-addon buscarcuentabtn">
+                                                <span class="fas fa-search"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="    margin-top: 25px;">
+                                <div class="col-md-12">
+                                    <div class="search-results">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading ui-draggable-handle">
+                                                    <h3 class="panel-title">Listado de Cuentas</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Número de Cuenta</th>
+                                                                <th>Tipo</th>
+                                                                <th>Saldo Inicial</th>
+                                                                <th>Estado</th>
+                                                                <th>Cliente</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body form-group-separated addpanelshow">
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Nombre</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="accusernombre_input" type="text" value=""
-                                        placeholder="Ingresa el nombre de la cuenta" maxlength="40"
-                                        class="form-control alphaonly" required="required">
+                        <div class="panel-body form-group-separated  addpanelshow">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Número de Cuenta</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="accnumbr_input"
+                                            placeholder="Ingresa número" maxlength="40" class="form-control alphaonly"
+                                            required="required">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Tipo de Cuenta</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="accusertipo_input" type="text" value=""
-                                        placeholder="Ingresa el Tipo de cuenta" maxlength="40"
-                                        class="form-control alphaonly" required="required">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Tipo de Cuenta</label>
+                                    <div class="col-md-10">
+                                        <select id="acctype_input" class="form-control select" data-style="btn-info">
+                                            <option value="AHORRO">Ahorros</option>
+                                            <option value="CORRIENTE">Corriente</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Saldo Inicial</label>
+                                    <div class="col-md-10">
+                                        <input id="accsaldo_input" type="number" value="" placeholder="Ingresa el saldo"
+                                            maxlength="2" class="form-control alphaonly" required="required"">
+                                    </div>
+                                </div>
+                                <div class=" form-group">
+                                        <label class="col-md-2 control-label">Estado</label>
+                                        <div class="col-md-10">
+                                            <select id="accstatus_input" class="form-control select"
+                                                data-style="btn-info">
+                                                <option value="TRUE">Activo</option>
+                                                <option value="FALSE">Inactivo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class=" form-group">
+                                        <label class="col-md-2 control-label">Cliente</label>
+                                        <div class="col-md-10 accidcli_cont">
+
+                                        </div>
+                                    </div>
+                            </form>
                         </div>
                         <div class="panel-footer addpanelnormal">
                             <span class="pull-right btn btn-success agregarnuevacuentabtn" title="Agregar Nuevo">
-                                <i class="fas fa-plus"></i> Nuevo </span>
+                                <i class="fas fa-plus"></i> Nuevo
+                            </span>
                         </div>
                         <div class="panel-footer addpanelshow">
                             <span class="pull-right btn btn-info guardarnuevacuentabtn" title="Agregar Nuevo">
-                                <i class="fas fa-save"></i> Agregar </span>
+                                <i class="fas fa-save"></i> Agregar
+                            </span>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-12 inicialpanel movimientospanel">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -256,266 +410,860 @@
                             </ul>
                         </div>
                         <div class="panel-body addpanelnormal">
-                            <div class="col-md-8">
-                                <div class="form-group push-up-10">
-                                    <h4>Buscar:</h4>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="fas fa-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Buscar Movimientos...">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group push-up-10">
+                                        <h4>Buscar:</h4>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control buscarmovinp"
+                                                placeholder="Buscar Movimientos...">
+                                            <div onclick="buscarmovimiento()" class="input-group-addon buscarmovbtn">
+                                                <span class="fas fa-search"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="    margin-top: 25px;">
+                                <div class="col-md-12">
+                                    <div class="search-results">
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading ui-draggable-handle">
+                                                    <h3 class="panel-title">Listado de Movimientos</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table table-striped table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Número de Cuenta</th>
+                                                                <th>Tipo</th>
+                                                                <th>Saldo Inicial</th>
+                                                                <th>Estado</th>
+                                                                <th>Movimiento</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body form-group-separated addpanelshow">
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">ID de Cliente</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="movuserrelated_input" type="text" value=""
-                                        placeholder="Ingresa el nombre de la cuenta" maxlength="40"
-                                        class="form-control alphaonly" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Tipo de movimiento</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="movuserType_input" type="text" value=""
-                                        placeholder="Ingresa el nombre de la cuenta" maxlength="40"
-                                        class="form-control alphaonly" required="required">
-                                </div>
-                            </div>
-                            <div class="form-group custform">
-                                <label class="col-md-3 col-xs-5 control-label">Monto</label>
-                                <div class="col-md-9 col-xs-7">
-                                    <input id="movusertipo_input" type="text" value=""
-                                        placeholder="Ingresa el Tipo de cuenta" maxlength="40"
-                                        class="form-control alphaonly" required="required">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-footer addpanelnormal">
-                            <span class="pull-right btn btn-success agregarnuevamovbtn" title="Agregar Nuevo">
-                                <i class="fas fa-plus"></i> Nuevo </span>
-                        </div>
-                        <div class="panel-footer addpanelshow">
-                            <span class="pull-right btn btn-info guardarnuevamovbtn" title="Agregar Nuevo">
-                                <i class="fas fa-save"></i> Agregar </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 inicialpanel reportespanel">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="panel-title-box">
-                                <h3>Reportes</h3>
-                                <span>Reportes del sistema </span>
-                            </div>
-                            <ul class="panel-controls" style="margin-top: 2px;">
-                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> </a></li>
-                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> </a></li>
-                            </ul>
-                        </div>
-                        <div class="panel-body">
-                            <div class="col-md-8">
-                                <div class="form-group push-up-10">
-                                    <h4>Buscar:</h4>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><span class="fas fa-search"></span></div>
-                                        <input type="text" class="form-control" placeholder="Buscar Reportes...">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Número de Cuenta</label>
+                                    <div class="col-md-10 movaccnumbr_cont">
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Tipo de Movimiento</label>
+                                    <div class="col-md-10">
+                                        <select id="movtype_input" class="form-control select" data-style="btn-info">
+                                            <option value="D">Retiro</option>
+                                            <option value="C">Depósito</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Monto</label>
+                                    <div class="col-md-10">
+                                        <input id="movmonto_input" type="number" value="" placeholder="Ingresa el monto"
+                                            maxlength="2" class="form-control alphaonly" required="required"">
+                                    </div>
+                                </div>    
+                            </form>
+                        </div>
+                        <div class=" panel-footer addpanelnormal">
+                                        <span class="pull-right btn btn-success agregarnuevamovbtn"
+                                            title="Agregar Nuevo">
+                                            <i class="fas fa-plus"></i> Nuevo </span>
+                                    </div>
+                                    <div class="panel-footer addpanelshow">
+                                        <span class="pull-right btn btn-info guardarnuevamovbtn" title="Agregar Nuevo">
+                                            <i class="fas fa-save"></i> Agregar </span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-md-12 inicialpanel reportespanel">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title-box">
+                                        <h3>Reportes</h3>
+                                        <span>Reportes del sistema </span>
+                                    </div>
+                                    <ul class="panel-controls" style="margin-top: 2px;">
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
+                                            </a></li>
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> </a></li>
+                                    </ul>
+                                </div>
+                                <div class="row">
+                                    <div class="panel-body">
+                                        <div class="form-group col-md-8 ">
+                                            <label class="control-label col-md-3">Desde: </label>
+                                            <div class="input-group col-md-9">
+                                                <input type="text" class="form-control desdeAd" id="filtEncDesde" />
+                                                <span class="input-group-addon add-on"> hasta </span>
+                                                <input type="text" class="form-control hastaAd" id="filtEncHasta" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group "> 
+                                                <button class="btn btn-success  " id="filtrarbtn"><span
+                                                        class="fas fa-search"></span> Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="    margin-top: 25px;">
+                                    <div class="col-md-12">
+                                        <div class="search-results">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading ui-draggable-handle">
+                                                        <h3 class="panel-title">Listado de Reportes</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Fecha</th>
+                                                                    <th>Cliente</th>
+                                                                    <th>Cuenta</th>
+                                                                    <th>Tipo</th>
+                                                                    <th>Saldo</th>
+                                                                    <th>Estado</th>
+                                                                    <th>Movimiento</th>
+                                                                    <th>Saldo Disponible</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer ">
+                                    <!-- <span class="pull-right btn btn-success disabled"   title="Agregar Nuevo">
+                                <i class="fas fa-plus"></i> Nuevo </span>  -->
+                                </div>
                             </div>
                         </div>
-                        <div class="panel-footer ">
-                            <!-- <span class="pull-right btn btn-success disabled"   title="Agregar Nuevo">
-                                <i class="fas fa-plus"></i> Nuevo </span>  -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+                <div class="mb-container">
+                    <div class="mb-middle">
+                        <div class="mb-title"><span class="fas fa-sign-out-alt"></span> Desea <strong>Salir</strong> ?
+                        </div>
+                        <div class="mb-content">
+                            <p>Seguro que desea salir?</p>
+                            <p>Clic en No en caso que desee continuar.</p>
+                        </div>
+                        <div class="mb-footer">
+                            <div class="pull-right">
+                                <a href="./index.html" class="btn btn-success btn-lg">Si</a>
+                                <button class="btn btn-default btn-lg mb-control-close">No</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-        </div>
-    </div>
+            <audio id="audio-alert" src="https://cabis.burtonservers.com/audio/alert.mp3" preload="auto"></audio>
+            <audio id="audio-fail" src="https://cabis.burtonservers.com/audio/fail.mp3" preload="auto"></audio>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/jquery/jquery.min.js"></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/jquery/jquery-ui.min.js"></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/bootstrap/bootstrap.min.js"></script>
+            <script type='text/javascript'
+                src='https://cabis.burtonservers.com/js/plugins/icheck/icheck.min.js'></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
 
-    <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
-        <div class="mb-container">
-            <div class="mb-middle">
-                <div class="mb-title"><span class="fas fa-sign-out-alt"></span> Desea <strong>Salir</strong> ?</div>
-                <div class="mb-content">
-                    <p>Seguro que desea salir?</p>
-                    <p>Clic en No en caso que desee continuar.</p>
-                </div>
-                <div class="mb-footer">
-                    <div class="pull-right">
-                        <a href="./index.html" class="btn btn-success btn-lg">Si</a>
-                        <button class="btn btn-default btn-lg mb-control-close">No</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <audio id="audio-alert" src="https://cabis.burtonservers.com/audio/alert.mp3" preload="auto"></audio>
-    <audio id="audio-fail" src="https://cabis.burtonservers.com/audio/fail.mp3" preload="auto"></audio>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/jquery/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <script type='text/javascript' src='https://cabis.burtonservers.com/js/plugins/icheck/icheck.min.js'></script>
-    <script type="text/javascript"
-        src="https://cabis.burtonservers.com/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-    <script type="text/javascript"
-        src="https://cabis.burtonservers.com/js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+            <script type='text/javascript'
+                src='https://cabis.burtonservers.com/js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/owl/owl.carousel.min.js"></script>
 
-    <script type='text/javascript'
-        src='https://cabis.burtonservers.com/js/plugins/bootstrap/bootstrap-datepicker.js'></script>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/owl/owl.carousel.min.js"></script>
+            <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/moment.min.js"></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/bootstrap/bootstrap-select.js"></script>
+            <script type="text/javascript"
+                src="https://cabis.burtonservers.com/js/plugins/daterangepicker/daterangepicker.js"></script>
+            <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins.js"></script>
+            <script type="text/javascript" src="https://cabis.burtonservers.com/js/actions.js"></script>
 
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins/moment.min.js"></script>
-    <script type="text/javascript"
-        src="https://cabis.burtonservers.com/js/plugins/daterangepicker/daterangepicker.js"></script>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/plugins.js"></script>
-    <script type="text/javascript" src="https://cabis.burtonservers.com/js/actions.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('.iniciopanel').show(function () {
+                        page_content_onresize();
+                    });
 
-    <script>
-        $(document).ready(function () {
-            $('.inicialpanel,.addpanelshow').slideUp();
-            $('.iniciopanel').slideDown();
+                    $('.btnshowInicio').click(function () {
+                        $('.inicialpanel,.addpanelshow').hide();
+                        $('.iniciopanel,.addpanelnormal').show(function () {
+                            page_content_onresize();
+                        });
+                    });
 
-            $('.btnshowInicio').click(function () {
-                $('.inicialpanel,.addpanelshow').slideUp();
-                $('.iniciopanel').slideDown();
-            });
+                    $('.btnshowClientes').click(function () {
+                        $('.inicialpanel,.addpanelshow').hide();
+                        $('.clientespanel,.addpanelnormal').show(function () {
+                            page_content_onresize();
+                            buscarclientes();
+                        });
+                    });
 
-            $('.btnshowClientes').click(function () {
-                $('.inicialpanel,.addpanelshow').slideUp();
-                $('.clientespanel').slideDown();
-            });
+                    $('.btnshowCuentas').click(function () {
+                        $('.inicialpanel,.addpanelshow').hide();
+                        $('.cuentaspanel,.addpanelnormal').show(function () {
+                            page_content_onresize();
+                            buscarcuentas();
+                            buscarclientesnombres();
+                        });
+                    });
 
-            $('.btnshowCuentas').click(function () {
-                $('.inicialpanel,.addpanelshow').slideUp();
-                $('.cuentaspanel').slideDown();
-            });
+                    $('.btnshowMovimientos').click(function () {
+                        $('.inicialpanel,.addpanelshow').hide();
+                        $('.movimientospanel,.addpanelnormal').show(function () {
+                            page_content_onresize();
+                            buscarcuentasnumeros();
+                            buscarmovimientos();
+                        });
+                    });
 
-            $('.btnshowMovimientos').click(function () {
-                $('.inicialpanel,.addpanelshow').slideUp();
-                $('.movimientospanel').slideDown();
-            });
+                    $('.btnshowReportes').click(function () {
+                        $('.inicialpanel,.addpanelshow').hide();
+                        $('.reportespanel,.addpanelnormal').show(function () {
+                            page_content_onresize();
+                        });
+                    });
 
-            $('.btnshowReportes').click(function () {
-                $('.inicialpanel,.addpanelshow').slideUp();
-                $('.reportespanel').slideDown();
-            });
+                    $('.agregarnuevoclientebtn').click(function () {
+                        $('.clientespanel .addpanelnormal').hide();
+                        $('.clientespanel .addpanelshow').show(function () {
+                            page_content_onresize();
+                        });
+                    });
+                    $('.agregarnuevacuentabtn').click(function () {
+                        $('.cuentaspanel .addpanelnormal').hide();
+                        $('.cuentaspanel .addpanelshow').show(function () {
+                            page_content_onresize();
+                        });
+                    });
+                    $('.agregarnuevamovbtn').click(function () {
+                        $('.movimientospanel .addpanelnormal').hide();
+                        $('.movimientospanel .addpanelshow').show(function () {
+                            page_content_onresize();
+                        });
+                    });
 
-            $('.agregarnuevoclientebtn').click(function () {
-                $('.clientespanel .addpanelnormal').slideUp();
-                $('.clientespanel .addpanelshow').slideDown();
-            });
-            $('.agregarnuevacuentabtn').click(function () {
-                $('.cuentaspanel .addpanelnormal').slideUp();
-                $('.cuentaspanel .addpanelshow').slideDown();
-            });
-            $('.agregarnuevamovbtn').click(function () {
-                $('.movimientospanel .addpanelnormal').slideUp();
-                $('.movimientospanel .addpanelshow').slideDown();
-            });
+                    $('.guardarnuevoclientebtn').click(function () {
+                        const newClient = {
+                            name: $('#usernombre_input').val().trim(),
+                            gender: $('#usergenero_input').val().trim(),
+                            age: $('#userage_input').val().trim(),
+                            identification: $('#userdocum_input').val().trim(),
+                            address: $('#useraddr_input').val().trim(),
+                            telephone: $('#userphone_input').val().trim(),
+                            password: $('#userpass_input').val().trim(),
+                            state: $('#userstatus_input').val().trim()
+                        };
 
-            $('.guardarnuevoclientebtn').click(function () {
-                const newClient = {
-                    name: $('#usernombre_input').val().trim(),
-                    email: $('#useremaile_input').val().trim(),
-                    address: $('#useraddr_input').val().trim()
-                };
+                        if (!newClient.name
+                            || !newClient.gender
+                            || !newClient.age
+                            || !newClient.identification
+                            || !newClient.address
+                            || !newClient.telephone
+                            || !newClient.password
+                            || !newClient.state) {
+                            alert("Todos los campos son obligatorios.");
+                            return;
+                        }
 
-                if (!newClient.name || !newClient.email || !newClient.address) {
-                    alert("Todos los campos son obligatorios.");
-                    return;
+                        $.ajax({
+                            url: '/clientes',
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(newClient),
+                            success: function (response) {
+                                alert("Cliente agregado con éxito.");
+                                console.log("Nuevo cliente:", response);
+
+                                $('.clientespanel .addpanelshow input').val('');
+                                $('.clientespanel .addpanelshow').hide();
+                                $('.clientespanel .addpanelnormal').show(function () {
+                                    page_content_onresize();
+                                    buscarclientes();
+                                });
+                            },
+                            error: function (xhr) {
+                                alert("Error al guardar el cliente. Verifica los datos e intenta de nuevo.");
+                                console.error("Error:", xhr.responseText);
+                            }
+                        });
+                    });
+
+                    $('.guardarnuevacuentabtn').click(function () {
+                        const newAcc = {
+                            accountNumber: $('#accnumbr_input').val().trim(),
+                            accountType: $('#acctype_input').val().trim(),
+                            initialBalance: $('#accsaldo_input').val().trim(),
+                            status: $('#accstatus_input').val().trim(),
+                            customer: { clientId: $(document).find('#accidcli_input').val().trim() }
+                        };
+
+                        if (!newAcc.accountNumber
+                            || !newAcc.accountType
+                            || !newAcc.initialBalance
+                            || !newAcc.status
+                            || !newAcc.customer) {
+                            alert("Todos los campos son obligatorios.");
+                            return;
+                        }
+
+                        $.ajax({
+                            url: '/cuentas',
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(newAcc),
+                            success: function (response) {
+                                alert("cuenta agregado con éxito.");
+                                console.log("Nuevo cliente:", response);
+
+                                $('.cuentaspanel .addpanelshow input').val('');
+                                $('.cuentaspanel .addpanelshow').hide();
+                                $('.cuentaspanel .addpanelnormal').show(function () {
+                                    page_content_onresize();
+                                    buscarcuentas();
+                                    buscarclientesnombres();
+                                });
+                            },
+                            error: function (xhr) {
+                                alert("Error al guardar la cuenta. Verifica los datos e intenta de nuevo.");
+                                console.error("Error:", xhr.responseText);
+                            }
+                        });
+                    });
+
+                    $('.guardarnuevamovbtn').click(function () {
+                        const newMov = {
+                            account: { id: $(document).find('#movaccnumbr_input').val().trim() },
+                            type: $('#movtype_input').val().trim(),
+                            amount: $('#movmonto_input').val().trim()
+                        };
+
+                        if (!newMov.account || !newMov.type || !newMov.amount) {
+                            alert("Todos los campos son obligatorios.");
+                            return;
+                        }
+
+                        $.ajax({
+                            url: '/movimientos',
+                            method: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify(newMov),
+                            success: function (response) {
+                                alert("Movimiento agregado con éxito.");
+                                console.log("Nuevo cliente:", response);
+
+                                $('.movimientospanel .addpanelshow input').val('');
+                                $('.movimientospanel .addpanelshow').hide();
+                                $('.movimientospanel .addpanelnormal').show(function () {
+                                    page_content_onresize();
+                                    buscarcuentasnumeros();
+                                    buscarmovimientos();
+                                });
+                            },
+                            error: function (xhr) {
+                                alert("Error al guardar Movimiento. " + xhr.responseText);
+                                console.error("Error:", xhr.responseText);
+                            }
+                        });
+                    });
+ 
+                    $(document).on('click', '#filtrarbtn', function (e) {
+                        reportePorFcha();
+                    }); 
+
+                    $('.buscarclienteinp').on('change', function () {
+                        buscarcliente();
+                    });
+
+                    $('.buscarcuentainp').on('change', function () {
+                        buscarcuenta();
+                    });
+
+                    $('.buscarmovinp').on('change', function () {
+                        buscarmovimiento();
+                    });
+
+                    $('#filtEncDesde,#filtEncHasta').datepicker({
+                        format: 'yyyy-mm-dd',
+                        autoclose: true,
+                        todayHighlight: true,
+                        startView: 0
+                    });
+
+                    console.log("menu listo");
+                });
+
+                function buscarcliente() {
+                    const searchQuery = $('.buscarclienteinp').val().trim();
+
+                    if (!searchQuery) {
+                        alert("Por favor, ingrese un término de búsqueda.");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: `/clientes/buscar?name=${encodeURIComponent(searchQuery)}`,
+                        method: 'GET',
+                        success: function (customers) {
+                            if (customers.length === 0) {
+                                alert("No se encontraron clientes con ese criterio.");
+                                return;
+                            }
+
+                            let resultHtml = '';
+                            customers.forEach(customer => {
+                                resultHtml += ` <tr>
+                                <td>${customer.clientId}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.address}</td>
+                                <td>${customer.telephone}</td>
+                                <td>${customer.password}</td>
+                                <td>${customer.state}</td> 
+                               </tr> `;
+                            });
+
+                            console.log("Listado:", resultHtml);
+                            $('.clientespanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron clientes con ese criterio.");
+                            } else {
+                                alert("Error al buscar clientes. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
                 }
 
-                $.ajax({
-                    url: '/clientes',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(newClient),
-                    success: function (response) {
-                        alert("Cliente agregado con éxito.");
-                        console.log("Nuevo cliente:", response);
 
-                        $('#usernombre_input, #useremaile_input, #useraddr_input').val('');
-                        $('.clientespanel .addpanelshow').slideUp();
-                        $('.clientespanel .addpanelnormal').slideDown();
-                    },
-                    error: function (xhr) {
-                        alert("Error al guardar el cliente. Verifica los datos e intenta de nuevo.");
-                        console.error("Error:", xhr.responseText);
-                    }
-                });
-            });
+                function buscarclientes() {
 
-            $('.guardarnuevacuentabtn').click(function () {
-                const newAcc = {
-                    name: $('#accusernombre_input').val().trim(),
-                    type: $('#accusertipo_input').val().trim()
-                };
+                    $.ajax({
+                        url: `/clientes`,
+                        method: 'GET',
+                        success: function (customers) {
+                            if (customers.length === 0) {
+                                alert("No se encontraron clientes con ese criterio.");
+                                return;
+                            }
 
-                if (!newAcc.name || !newAcc.type) {
-                    alert("Todos los campos son obligatorios.");
-                    return;
+                            let resultHtml = '';
+                            customers.forEach(customer => {
+                                resultHtml += ` <tr>
+                                <td>${customer.clientId}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.address}</td>
+                                <td>${customer.telephone}</td>
+                                <td>${customer.password}</td>
+                                <td>${customer.state}</td> 
+                               </tr> `;
+                            });
+                            console.log("Listado:", resultHtml);
+                            $('.clientespanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron clientes con ese criterio.");
+                            } else {
+                                alert("Error al buscar clientes. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
                 }
 
-                $.ajax({
-                    url: '/cuentas',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(newAcc),
-                    success: function (response) {
-                        alert("cuenta agregado con éxito.");
-                        console.log("Nuevo cliente:", response);
+                function buscarclientesnombres() {
 
-                        $('#accusernombre_input, #accusernombre_input').val('');
-                        $('.cuentaspanel .addpanelshow').slideUp();
-                        $('.cuentaspanel .addpanelnormal').slideDown();
-                    },
-                    error: function (xhr) {
-                        alert("Error al guardar la cuenta. Verifica los datos e intenta de nuevo.");
-                        console.error("Error:", xhr.responseText);
-                    }
-                });
-            });
+                    $.ajax({
+                        url: `/clientes`,
+                        method: 'GET',
+                        success: function (customers) {
+                            if (customers.length === 0) {
+                                alert("No se encontraron clientes con ese criterio.");
+                                return;
+                            }
 
-            $('.guardarnuevamovbtn').click(function () {
-                const newMov = {
-                    customerId: $('#accusernombre_input').val().trim(),
-                    type: $('#accusertipo_input').val().trim(),
-                    amount: $('#accusertipo_input').val().trim()
-                };
+                            let resultHtml = ' <select id="accidcli_input"  data-live-search="true" class="form-control select" data-style="btn-info"> ';
+                            customers.forEach(customer => {
+                                resultHtml += ` 
+                                    <option value="${customer.clientId}">${customer.name}</option> 
+                                 `;
+                            });
 
-                if (!newMov.customerId || !newMov.type || !newMov.amount) {
-                    alert("Todos los campos son obligatorios.");
-                    return;
+                            resultHtml += ' </select>';
+                            console.log("Listado nombres:", resultHtml);
+                            $('.accidcli_cont').html(resultHtml);
+                            $(".select").selectpicker();
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron clientes con ese criterio.");
+                            } else {
+                                alert("Error al buscar clientes. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
                 }
 
-                $.ajax({
-                    url: '/movimientos',
-                    method: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(newMov),
-                    success: function (response) {
-                        alert("Movimiento agregado con éxito.");
-                        console.log("Nuevo cliente:", response);
 
-                        $('#accusernombre_input, #accusernombre_input').val('');
-                        $('.cuentaspanel .addpanelshow').slideUp();
-                        $('.cuentaspanel .addpanelnormal').slideDown();
-                    },
-                    error: function (xhr) {
-                        alert("Error al guardar Movimiento. Verifica los datos e intenta de nuevo.");
-                        console.error("Error:", xhr.responseText);
+                function buscarcuenta() {
+                    const searchQuery = $('.buscarcuentainp').val().trim();
+
+                    if (!searchQuery) {
+                        alert("Por favor, ingrese un término de búsqueda.");
+                        return;
                     }
-                });
-            });
 
-            console.log("menu listo");
-        });
+                    $.ajax({
+                        url: `/cuentas/buscar/numerodecuenta?accountNumber=${encodeURIComponent(searchQuery)}`,
+                        method: 'GET',
+                        success: function (accounts) {
+                            if (accounts.length === 0) {
+                                $.ajax({
+                                    url: `/cuentas/buscar/nombrecliente?customerName=${encodeURIComponent(searchQuery)}`,
+                                    method: 'GET',
+                                    success: function (accounts) {
+                                        if (accounts.length === 0) {
+                                            alert("No se encontraron cuentas con ese criterio.");
+                                            return;
+                                        }
 
-    </script>
+                                        let resultHtml = '';
+                                        accounts.forEach(account => {
+                                            resultHtml += ` <tr>
+                                <td>${account.id}</td>
+                                <td>${account.accountNumber}</td>
+                                <td>${account.accountType}</td>
+                                <td>${account.initialBalance}</td>
+                                <td>${account.status}</td>
+                                <td>${account.customer.name}</td> 
+                               </tr> `;
+                                        });
+                                        console.log("Listado Cuentas:", resultHtml);
+                                        $('.cuentaspanel .panel-body .search-results tbody').html(resultHtml);
+                                    },
+                                    error: function (xhr) {
+                                        if (xhr.status === 404) {
+                                            alert("No se encontraron cuentas con ese criterio.");
+                                        } else {
+                                            alert("Error al buscar cuentas. Por favor, inténtelo de nuevo.");
+                                        }
+                                    }
+                                });
+                                return;
+                            }
+
+                            console.log("accounts:", accounts);
+                            let resultHtml = '';
+                            accounts.forEach(account => {
+                                resultHtml += ` <tr>
+                                <td>${account.id}</td>
+                                <td>${account.accountNumber}</td>
+                                <td>${account.accountType}</td>
+                                <td>${account.initialBalance}</td>
+                                <td>${account.status}</td>
+                                <td>${account.customer.name}</td> 
+                               </tr> `;
+                            });
+                            console.log("Listado Cuentas:", resultHtml);
+                            $('.cuentaspanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                $.ajax({
+                                    url: `/cuentas/buscar/nombrecliente?customerName=${encodeURIComponent(searchQuery)}`,
+                                    method: 'GET',
+                                    success: function (accounts) {
+                                        if (accounts.length === 0) {
+                                            alert("No se encontraron cuentas con ese criterio.");
+                                            return;
+                                        }
+
+                                        let resultHtml = '';
+                                        accounts.forEach(account => {
+                                            resultHtml += ` <tr>
+                                <td>${account.id}</td>
+                                <td>${account.accountNumber}</td>
+                                <td>${account.accountType}</td>
+                                <td>${account.initialBalance}</td>
+                                <td>${account.status}</td>
+                                <td>${account.customer.name}</td> 
+                               </tr> `;
+                                        });
+                                        console.log("Listado Cuentas:", resultHtml);
+                                        $('.cuentaspanel .panel-body .search-results tbody').html(resultHtml);
+                                    },
+                                    error: function (xhr) {
+                                        if (xhr.status === 404) {
+                                            alert("No se encontraron cuentas con ese criterio.");
+                                        } else {
+                                            alert("Error al buscar cuentas. Por favor, inténtelo de nuevo.");
+                                        }
+                                    }
+                                });
+                            } else {
+                                alert("Error al buscar cuentas. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
+                }
+
+                function buscarcuentas() {
+
+                    $.ajax({
+                        url: `/cuentas`,
+                        method: 'GET',
+                        success: function (accounts) {
+                            if (accounts.length === 0) {
+                                alert("No se encontraron cuentas con ese criterio.");
+                                return;
+                            }
+
+
+                            let resultHtml = '';
+                            accounts.forEach(account => {
+                                resultHtml += ` <tr>
+                                <td>${account.id}</td>
+                                <td>${account.accountNumber}</td>
+                                <td>${account.accountType}</td>
+                                <td>${account.initialBalance}</td>
+                                <td>${account.status}</td>
+                                <td>${account.customer.name}</td> 
+                               </tr> `;
+                            });
+                            console.log("Listado Cuentas:", resultHtml);
+                            $('.cuentaspanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron cuentas con ese criterio.");
+                            } else {
+                                alert("Error al buscar cuentas. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
+                }
+
+                function buscarcuentasnumeros() {
+
+                    $.ajax({
+                        url: `/cuentas`,
+                        method: 'GET',
+                        success: function (accounts) {
+                            if (accounts.length === 0) {
+                                alert("No se encontraron cuentas con ese criterio.");
+                                return;
+                            }
+
+
+                            let resultHtml = ' <select id="movaccnumbr_input" data-live-search="true" class="form-control select" data-style="btn-info"> ';
+                            accounts.forEach(account => {
+                                resultHtml += ` 
+                                    <option value="${account.id}">${account.accountNumber}</option> 
+                                 `;
+                            });
+
+                            console.log("Listado Cuentas numeros:", resultHtml);
+                            $('.movaccnumbr_cont').html(resultHtml);
+                            $(".select").selectpicker();
+
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron cuentas con ese criterio.");
+                            } else {
+                                alert("Error al buscar cuentas. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
+                }
+
+                function buscarmovimiento() {
+                    const searchQuery = $('.buscarmovinp').val().trim();
+
+                    if (!searchQuery) {
+                        alert("Por favor, ingrese un término de búsqueda.");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: `/movimientos/cuenta/${encodeURIComponent(searchQuery)}`,
+                        method: 'GET',
+                        success: function (movimientos) {
+                            if (movimientos.length === 0) {
+                                alert("No se encontraron movimientos con ese criterio.");
+                                return;
+                            }
+
+                            let resultHtml = '';
+                            movimientos.forEach(movimiento => {
+
+                                let mov = '';
+                                if (movimiento.type == "D") {
+                                    mov += 'Retiro de';
+                                } else if (movimiento.type == "C") {
+                                    mov += 'Depósito de';
+                                }
+
+                                resultHtml += ` <tr>
+                                <td>${movimiento.id}</td>
+                                <td>${movimiento.account.accountNumber}</td>
+                                <td>${movimiento.account.accountType}</td>
+                                <td>${movimiento.balance}</td>
+                                <td>${movimiento.account.status}</td>
+                                <td>${mov} ${movimiento.amount}</td> 
+                               </tr> `;
+                            });
+                            console.log("Listado:", resultHtml);
+                            $('.movimientospanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron movimientos con ese criterio.");
+                            } else {
+                                alert("Error al buscar movimientos. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
+                }
+
+                function buscarmovimientos() {
+
+                    $.ajax({
+                        url: `/movimientos`,
+                        method: 'GET',
+                        success: function (movimientos) {
+                            if (movimientos.length === 0) {
+                                alert("No se encontraron movimientos con ese criterio.");
+                                return;
+                            }
+
+
+                            let resultHtml = '';
+                            movimientos.forEach(movimiento => {
+
+                                let mov = '';
+                                if (movimiento.type == "D") {
+                                    mov += 'Retiro de';
+                                } else if (movimiento.type == "C") {
+                                    mov += 'Depósito de';
+                                }
+
+                                resultHtml += ` <tr>
+                                <td>${movimiento.id}</td>
+                                <td>${movimiento.account.accountNumber}</td>
+                                <td>${movimiento.account.accountType}</td>
+                                <td>${movimiento.balance}</td>
+                                <td>${movimiento.account.status}</td>
+                                <td>${mov} ${movimiento.amount}</td> 
+                               </tr> `;
+                            });
+                            console.log("Listado:", resultHtml);
+                            $('.movimientospanel .panel-body .search-results tbody').html(resultHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 404) {
+                                alert("No se encontraron movimientos con ese criterio.");
+                            } else {
+                                alert("Error al buscar movimientos. Por favor, inténtelo de nuevo.");
+                            }
+                        }
+                    });
+                }
+
+                function reportePorFcha() {
+                    $('.reportespanel tbody').html('');
+                    const startDate = $('#filtEncDesde').val();
+                    const endDate = $('#filtEncHasta').val();
+
+                    if (!startDate || !endDate) {
+                        alert("Por favor, ingrese ambas fechas para generar el reporte.");
+                        return;
+                    }
+
+                    const start = new Date(startDate);
+                    const end = new Date(endDate);
+
+                    if (start > end) {
+                        alert("La fecha de inicio no puede ser mayor que la fecha de fin.");
+                        return;
+                    }
+
+                    $.ajax({
+                        url: `/reportes/fecha`,
+                        method: 'GET',
+                        data: { startDate, endDate },
+                        success: function (response) {
+                            if (response.length === 0) {
+                                alert("No se encontraron movimientos en el rango de fechas proporcionado.");
+                                return;
+                            }
+
+                            console.log("response:", response);
+                            let reportHtml = '';
+                            response.forEach(report => {
+                                reportHtml += `
+                    <tr>
+                        <td>${report.fecha}</td>
+                        <td>${report.cliente}</td>
+                        <td>${report.numeroCuenta}</td>
+                        <td>${report.tipo}</td>
+                        <td>${report.saldoInicial}</td>
+                        <td>${report.estado ? 'Activo' : 'Inactivo'}</td>
+                        <td>${report.movimiento}</td>
+                        <td>${report.saldoDisponible}</td>
+                    </tr>
+                `;
+                            });
+
+                            $('.reportespanel tbody').html(reportHtml);
+                        },
+                        error: function (xhr) {
+                            if (xhr.status === 400) {
+                                alert("Solicitud incorrecta. Verifique las fechas ingresadas.");
+                            } else {
+                                alert("Error al obtener el reporte. Por favor, inténtelo nuevamente.");
+                            }
+                        }
+                    });
+                }
+
+
+            </script>
 </body>
 
 </html>
